@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '../theme/palette.dart';
 
 class InputFieldBox extends StatelessWidget {
-
   const InputFieldBox({
     super.key,
     required this.controller,

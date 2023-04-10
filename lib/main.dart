@@ -60,10 +60,9 @@ class _HomePageState extends State<HomePage> {
       appBar: appbar,
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsetsDirectional.symmetric(
-              vertical: 30, horizontal: 15),
+          padding: const EdgeInsetsDirectional.symmetric(vertical: 30, horizontal: 15),
           child: Column(
-            children: <Widget> [
+            children: <Widget>[
               const Text(
                 AppWriteConstants.upperTextFieldText,
                 style: TextStyle(
@@ -74,7 +73,8 @@ class _HomePageState extends State<HomePage> {
                 padding: const EdgeInsets.symmetric(vertical: 20),
                 child: InputFieldBox(
                   controller: numberController,
-                  hintText: 'Number: ', validate: false,
+                  hintText: 'Number: ',
+                  validate: false,
                 ),
               ),
             ],
