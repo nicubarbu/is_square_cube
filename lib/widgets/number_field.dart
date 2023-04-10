@@ -1,26 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:is_square_cube/theme/palette.dart';
+import '../theme/palette.dart';
 
 class InputFieldBox extends StatelessWidget {
-  final TextEditingController controller;
-  final String hintText;
-  final _validate = false;
 
   const InputFieldBox({
     super.key,
     required this.controller,
     required this.hintText,
+    required this.validate,
   });
+  final TextEditingController controller;
+  final String hintText;
+  final bool validate;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
-      validator: (value) {
+      validator: (String? value) {
         if (value == null || value.isEmpty) {
           return 'Please enter an integer.';
         }
-        final intRegex = RegExp(r'^-?\d+$');
+        final RegExp intRegex = RegExp(r'^-?\d+$');
         if (!intRegex.hasMatch(value)) {
           return 'Please enter a valid integer.';
         }
@@ -45,9 +46,9 @@ class InputFieldBox extends StatelessWidget {
         hintStyle: const TextStyle(
           fontSize: 18,
         ),
-        errorText: _validate ? 'Value can\'t be empty!' : null,
+        errorText: validate ? "Value can't be empty!" : null,
       ),
-      keyboardType: const TextInputType.numberWithOptions(decimal: false),
+      keyboardType: TextInputType.number,
     );
   }
 }

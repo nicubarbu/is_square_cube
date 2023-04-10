@@ -1,10 +1,11 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:is_square_cube/constants/ui_constants.dart';
-import 'package:is_square_cube/theme/theme.dart';
-import 'package:is_square_cube/constants/constants.dart';
-import 'package:is_square_cube/widgets/number_field.dart';
+
+import 'constants/constants.dart';
+import 'constants/ui_constants.dart';
+import 'theme/theme.dart';
+import 'widgets/number_field.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,22 +26,22 @@ class MyApp extends StatelessWidget {
 }
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  final appbar = UIConstants.appBar();
-  final numberController = TextEditingController();
+  final AppBar appbar = UIConstants.appBar();
+  final TextEditingController numberController = TextEditingController();
   String printText = '';
 
   bool validateInputNumber(String value) {
     if (value.isEmpty) {
       return false;
     }
-    final n = num.tryParse(value);
+    final num? n = num.tryParse(value);
     if (n == null) {
       return false;
     }
@@ -62,7 +63,7 @@ class _HomePageState extends State<HomePage> {
           padding: const EdgeInsetsDirectional.symmetric(
               vertical: 30, horizontal: 15),
           child: Column(
-            children: [
+            children: <Widget> [
               const Text(
                 AppWriteConstants.upperTextFieldText,
                 style: TextStyle(
@@ -73,7 +74,7 @@ class _HomePageState extends State<HomePage> {
                 padding: const EdgeInsets.symmetric(vertical: 20),
                 child: InputFieldBox(
                   controller: numberController,
-                  hintText: 'Number: ',
+                  hintText: 'Number: ', validate: false,
                 ),
               ),
             ],
@@ -83,28 +84,28 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           if (validateInputNumber(numberController.text)) {
-            dynamic result = int.parse(numberController.text);
+            final int result = int.parse(numberController.text);
             setState(
               () {
                 bool isCube(int n) {
-                  int cubeRoot = pow(n, 1 / 3).round();
+                  final int cubeRoot = pow(n, 1 / 3).round();
                   return cubeRoot * cubeRoot * cubeRoot == n;
                 }
 
                 bool isSquared(int n) {
-                  int sqrtNum = sqrt(n).toInt();
+                  final int sqrtNum = sqrt(n).toInt();
                   return sqrtNum * sqrtNum == n;
                 }
 
                 String checkNumber(int n) {
                   if (isCube(n) && isSquared(n)) {
-                    return '\'$n\' is both a square and a cube!';
+                    return "'$n' is both a square and a cube!";
                   } else if (isCube(n)) {
-                    return '\'$n\' is a cube number!';
+                    return "'$n' is a cube number!";
                   } else if (isSquared(n)) {
-                    return '\'$n\' is a squared number!';
+                    return "'$n' is a squared number!";
                   } else {
-                    return '\'$n\' is neither a cube nor a square!';
+                    return "'$n' is neither a cube nor a square!";
                   }
                 }
 

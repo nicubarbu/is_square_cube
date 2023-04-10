@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:is_square_cube/constants/constants.dart';
+import 'constants.dart';
 
 class UIConstants {
   static AppBar appBar() {

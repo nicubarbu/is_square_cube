@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:is_square_cube/theme/palette.dart';
+import 'palette.dart';
 
 class AppTheme {
   static ThemeData theme = ThemeData.dark().copyWith(
